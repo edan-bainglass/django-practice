@@ -1,0 +1,5 @@
+.vscode
+djangoVenv
+class_files
+notes.md
+__pycache__
