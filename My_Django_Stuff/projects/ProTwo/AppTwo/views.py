@@ -7,21 +7,21 @@ from AppTwo.forms import UserForm
 
 
 def index(request: HttpRequest) -> HttpResponse:
-    return render(request, 'AppTwo/index.html')
+    return render(request, 'apptwo/index.html')
 
 
 def help(request: HttpRequest) -> HttpResponse:
     my_dict = {'page_header': "Help Page"}
-    return render(request, 'AppTwo/help.html', context=my_dict)
+    return render(request, 'apptwo/help.html', context=my_dict)
 
 
 def users(request: HttpRequest) -> HttpResponse:
     user_list = User.objects.order_by('last_name')
     users_dict = {'users': user_list}
-    return render(request, 'AppTwo/users.html', context=users_dict)
+    return render(request, 'apptwo/users.html', context=users_dict)
 
 
-def new_users(request: HttpRequest) -> HttpResponse:
+def registration(request: HttpRequest) -> HttpResponse:
     form = UserForm()
 
     if request.method == 'POST':
@@ -33,4 +33,5 @@ def new_users(request: HttpRequest) -> HttpResponse:
         else:
             print("ERROR FORM INVALID")
 
-    return render(request, 'AppTwo/new_users.html', context={'form': form})
+    form_dict = {'form': form}
+    return render(request, 'apptwo/registration.html', context=form_dict)
