@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-{% load static %}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -14,23 +13,17 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
     />
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-    <title>ProTwo</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>Templates</title>
   </head>
   <body>
-    <header class="container">
-      <div class="jumbotron">
-        <h1 class="display-1">Welcome!</h1>
-        <p>
-          Go to <a href="{% url 'users' %}">apptwo/users</a> to see the list of
-          user information!
-        </p>
-        <p>
-          Go to <a href="{% url 'new_users' %}">apptwo/users/new</a> to sign up!
-        </p>
-      </div>
-    </header>
-
+    <div class="container">
+      <header class="jumbotron">
+        <h1>RELATIVE PAGE</h1>
+        To <a href="{% url 'index' %}">home</a> page<br />
+        To <a href="{% url 'basic_app:other' %}">other</a> page
+      </header>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
