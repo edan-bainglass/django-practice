@@ -19,6 +19,6 @@ from AppTwo import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('', include('AppTwo.urls')),
+    path('apptwo/', include('AppTwo.urls')),
     path('admin/', admin.site.urls)
 ]

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load static %}
+{% load static %} {% load crispy_forms_tags %}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -15,14 +15,17 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
     />
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-    <title>ProTwo</title>
+    <title>New Users</title>
   </head>
   <body>
     <header class="container">
-      <h1 class="display-1">Welcome!</h1>
+      <h1 class="display-4">Sign Up Here!</h1>
     </header>
     <div class="container">
-      <p>Go to /users to see the list of user information!</p>
+      <form method="POST">
+        {{ form|crispy }} {% csrf_token %}
+        <input type="submit" value="Submit" class="btn btn-primary" />
+      </form>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
