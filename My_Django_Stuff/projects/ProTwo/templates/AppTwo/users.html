@@ -15,12 +15,28 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
     />
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-    <title>Help Page</title>
+    <title>Users</title>
   </head>
   <body>
     <header class="container">
-      <h1 class="display-1">{{ page_header }}</h1>
+      <h1 class="display-1">Here are your users:</h1>
     </header>
+    <div class="container">
+      {% if users %}
+      <ol>
+        {% for user in users %}
+        <li>User Info</li>
+        <ul>
+          <li>First Name: {{ user.first_name }}</li>
+          <li>Last Name: {{ user.last_name }}</li>
+          <li>Email: {{ user.email }}</li>
+        </ul>
+        {% endfor %}
+      </ol>
+      {% else %}
+      <p>No users found!</p>
+    </div>
+    {% endif %}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
