@@ -1,4 +1,8 @@
-{% extends 'basic_app/base.html' %} {% block body_block %}
+{% extends 'basic_app/base.html' %}
+{% load my_extras %}
+{% block body_block %}
 <h1>HOME PAGE</h1>
 <h2>This is an example of template inheritance!</h2>
+<h1>{{ text|cut:"hello" }}</h1>
+<h1>{{ number|add:"99" }}</h1>
 {% endblock body_block %}
