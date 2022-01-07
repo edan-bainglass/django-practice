@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -13,12 +14,13 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
     />
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
     <title>First App</title>
   </head>
   <body>
     <h1>Hello, this is index.html!</h1>
     {{ insert_me }}
+    <img src="{% static 'images/jens.jpg' %}" alt="Jens Kidman" />
 
     <!-- BS4 scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
