@@ -11,7 +11,7 @@ class Topic(models.Model):
 
 
 class Webpage(models.Model):
-    Topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
+    topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     name = models.CharField(max_length=264, unique=True)
     url = models.URLField(unique=True)
 
