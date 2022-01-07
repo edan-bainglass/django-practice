@@ -18,9 +18,32 @@
     <title>First App</title>
   </head>
   <body>
-    <h1>Hello, this is index.html!</h1>
-    {{ insert_me }}
-    <img src="{% static 'images/jens.jpg' %}" alt="Jens Kidman" />
+    <header class="container">
+      <h1 class="display-1">Django Level 2</h1>
+    </header>
+    <div class="container">
+      <h2 class="display-4">Access Records</h2>
+      <div class="djangotwo">
+        {% if access_records %}
+        <table class="table table-hover">
+          <thead>
+            <th>Site Name</th>
+            <th>Date Accessed</th>
+          </thead>
+          <tbody>
+            {% for record in access_records %}
+            <tr>
+              <td>{{ record.name }}</td>
+              <td>{{ record.date }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <p>No access records found!</p>
+        {% endif %}
+      </div>
+    </div>
 
     <!-- BS4 scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
