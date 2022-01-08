@@ -1,0 +1,7 @@
+flake8
+yapf
+django
+django[argon2]
+django-crispy-forms
+pillow
+bcrypt
