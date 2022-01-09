@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="Description" content="Enter your description here" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <title>{% block title %}{% endblock title %}</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand navbar-light bg-light navbar-static-top">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="{% url 'basic_app:list' %}" class="navbar-brand">School</a>
+      </li>
+      <li class="nav-item">
+        <a href="{% url 'admin:index' %}" class="nav-link">Admin</a>
+      </li>
+      <li class="nav-item">
+        <a href=""></a>
+      </li>
+    </ul>
+  </nav>
+  <div class="container">
+    {% block body %}
+    {% endblock body %}
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
