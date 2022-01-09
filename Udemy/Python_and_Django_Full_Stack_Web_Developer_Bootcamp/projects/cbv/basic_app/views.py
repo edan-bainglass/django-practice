@@ -60,3 +60,29 @@ class SchoolDeleteView(DeleteView):
 
     model = models.School
     success_url = reverse_lazy('basic_app:list')
+
+
+class StudentCreateView(CreateView):
+    """docstring"""
+
+    fields = ('name', 'age')
+    model = models.Student
+
+    def form_valid(self, form):
+        print(form)
+        form.instance.school = self.request.school
+        return super().form_valid(form)
+
+
+class StudentUpdateView(UpdateView):
+    """docstring"""
+
+    fields = ('age')
+    model = models.Student
+
+
+class StudentDeleteView(DeleteView):
+    """docstring"""
+
+    model = models.Student
+    success_url = reverse_lazy('basic_app:list')

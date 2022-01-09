@@ -1,10 +1,10 @@
 {% extends 'basic_app/base.html' %}
 
-{% block title %}Delete School | CBV{% endblock title %}
+{% block title %}Delete Student | CBV{% endblock title %}
 
 {% block body %}
 
-<h1>Delete {{ school.name }}?</h1>
+<h1>Delete {{ student.name }}?</h1>
 
 <form method="POST">
   {% csrf_token %}

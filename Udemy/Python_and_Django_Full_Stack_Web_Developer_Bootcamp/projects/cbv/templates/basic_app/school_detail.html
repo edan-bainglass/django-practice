@@ -10,16 +10,21 @@
   <p>Name: {{ school.name }}</p>
   <p>Principal: {{ school.principal }}</p>
   <p>Location: {{ school.location }}</p>
+
+  <div class="mb-3">
+    <a href="{% url 'basic_app:update' pk=school.pk %}" class="btn btn-warning">Update</a>
+  </div>
+
   <h3>Students:</h3>
   {% for student in school.students.all %}
   <p>{{ student.name }} who is {{ student.age }} years old</p>
   {% endfor %}
+
+  <div class="mt-3">
+    <a href="{% url 'basic_app:create_student' pk=school.pk %}" class="btn btn-primary">Add student</a>
+  </div>
 </div>
 
-<div class="container">
-  <p>
-    <a href="{% url 'basic_app:update' pk=school.pk %}" class="btn btn-warning">Update</a>
-  </p>
-</div>
+
 
 {% endblock body %}
