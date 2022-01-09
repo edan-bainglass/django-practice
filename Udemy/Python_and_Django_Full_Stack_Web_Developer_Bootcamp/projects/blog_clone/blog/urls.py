@@ -22,17 +22,17 @@ urlpatterns = [
     path(
         'post/new/',
         views.PostCreateView.as_view(),
-        name='post_new',
+        name='new_post',
     ),
     path(
         'post/<int:pk>/edit/',
         views.PostUpdateView.as_view(),
-        name='post_edit',
+        name='edit_post',
     ),
     path(
         'post/<int:pk>/remove/',
         views.PostDeleteView.as_view(),
-        name='post_remove',
+        name='remove_post',
     ),
     path(
         'drafts/',
