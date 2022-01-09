@@ -1,3 +1,4 @@
+from django.db.models.query import QuerySet
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
@@ -27,10 +28,11 @@ class PostListView(ListView):
 
     model = Post
 
-    def get_queryset(self) -> None:
-        """docstring"""
-        return Post.objects.filter(
-            published_date__lte=timezone.now).order_by('-published_date')
+    # FIXME this method breaks the site
+    # def get_queryset(self) -> QuerySet:
+    #     """docstring"""
+    #     return Post.objects.filter(
+    #         published_date__lte=timezone.now).order_by('-published_date')
 
 
 class PostDetailView(DetailView):
@@ -74,12 +76,14 @@ class DraftListView(LoginRequiredMixin, ListView):
     login_url = '/login/'
     redirect_field_name = 'blog/post_list.html'
 
+    template_name = 'blog/post_draft_list.html'
+    context_object_name = 'draft_posts'
     model = Post
 
     def get_queryset(self) -> None:
         """docstring"""
         return Post.objects.filter(
-            published_date__isnull=True).order_by('-published_date')
+            published_date__isnull=True).order_by('-created_date')
 
 
 ###############################################################################
@@ -89,7 +93,7 @@ class DraftListView(LoginRequiredMixin, ListView):
 def publish_post(request: HttpRequest, pk: int) -> HttpResponse:
     """docstring"""
 
-    post: Post = get_object_or_404(Comment, pk=pk)
+    post: Post = get_object_or_404(Post, pk=pk)
     post.publish()
 
     return redirect('post_detail', pk=pk)
@@ -101,7 +105,7 @@ def add_comment_to_post(request: HttpRequest, pk: int) -> HttpResponse:
     post = get_object_or_404(Post, pk=pk)
 
     if request.method == 'POST':
-        form = CommentForm(request.Post)
+        form = CommentForm(request.POST)
 
         if form.is_valid():
             comment: Comment = form.save(commit=False)
@@ -112,7 +116,7 @@ def add_comment_to_post(request: HttpRequest, pk: int) -> HttpResponse:
     else:
         form = CommentForm()
 
-    return render(request, 'blog/comment-form.html', {'form': form})
+    return render(request, 'blog/comment_form.html', {'form': form})
 
 
 @login_required

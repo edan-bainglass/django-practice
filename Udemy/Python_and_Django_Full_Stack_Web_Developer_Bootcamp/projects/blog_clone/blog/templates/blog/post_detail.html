@@ -11,17 +11,17 @@
   {{ post.published_date }}
 </div>
 {% else %}
-<a href="{% url 'publish_post' pk=post.pk %}" class="btn btn-default"></a>
+<a href="{% url 'publish_post' pk=post.pk %}" class="btn btn-secondary">Publish</a>
 {% endif %}
 
-<p class="postcontent">{{ post.title|safe|linebreaksbr }}</p>
+<p class="postcontent">{{ post.text|safe|linebreaksbr }}</p>
 
 {% if user.is_authenticated %}
 <a href="{% url 'edit_post' pk=post.pk %}" class="btn btn-primary">
-  <i class="glyphicon glyphicon-pencil"></i>
+  <i class="fa fa-pencil-alt"></i>
 </a>
 <a href="{% url 'remove_post' pk=post.pk %}" class="btn btn-primary">
-  <i class="glyphicon glyphicon-remove"></i>
+  <i class="fa fa-times"></i>
 </a>
 {% endif %}
 
@@ -36,10 +36,10 @@
   {{ comment.created_date }}
   {% if not comment.approved_comment %}
   <a href="{% url 'remove_comment' pk=comment.pk %}" class="btn btn-primary">
-    <i class="glyphicon glyphicon-remove"></i>
+    <i class="fa fa-times"></i>
   </a>
   <a href="{% url 'approve_comment' pk=comment.pk %}" class="btn btn-primary">
-    <i class="glyphicon glyphicon-ok"></i>
+    <i class="fa fa-check"></i>
   </a>
   {% endif %}
 
